@@ -42,9 +42,13 @@ public class PDFGenerator implements Runnable{
         final byte[] OWNERPASS = "owner".getBytes();
 
         // create font
-        String logoDir = "fourqu/src/main/resources/image/banklogo.png";
-        final String REGULAR = "fourqu/src/main/resources/font/NotoSans-Regular.ttf";
-        final String BOLD = "fourqu/src/main/resources/font/NotoSans-Bold.ttf";
+//        String logoDir = "fourqu/src/main/resources/image/banklogo.png";
+//        final String REGULAR = "fourqu/src/main/resources/font/NotoSans-Regular.ttf";
+//        final String BOLD = "fourqu/src/main/resources/font/NotoSans-Bold.ttf";
+
+        String logoDir = "/app/src/main/resources/image/banklogo.png";
+        final String REGULAR = "/app/src/main/resources/font/NotoSans-Regular.ttf";
+        final String BOLD = "/app/src/main/resources/font/NotoSans-Bold.ttf";
 
         PdfFont noto = PdfFontFactory.createFont(REGULAR);
         PdfFont notoBold = PdfFontFactory.createFont(BOLD);
