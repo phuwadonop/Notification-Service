@@ -50,7 +50,7 @@ public class StatementSender extends EmailSender{
             mailSender.send(mimeMessage);
             System.out.println("Statement has sent.");
 
-            File file = new File("R:/work/project/FourQU/statement"+event.getAccountNumber()+".pdf");
+            File file = new File(event.getAccountNumber()+".pdf");
             FileUtils.forceDelete(file);
 
         } catch (Exception e){
