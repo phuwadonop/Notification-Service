@@ -6,7 +6,7 @@ import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
 
 public abstract class EmailEvent {
-    private final String sourceEmail = "63010774@kmitl.ac.th";
+    private final String sourceEmail = "phuadjan@gmail.com";
     @NotBlank
     @NotNull
     private String destEmail;
