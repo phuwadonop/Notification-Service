@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Hello newspaper subscription</title>
+    <style>
+        .header {
+            height: 80px;
+            background-color: #387766;
+            display: flex;
+            align-items: center;
+        }
+        .header h1 {
+            color: #F3F0EA;
+            margin-left: 5px;
+            font-size: 35px;
+        }
+        .content {
+            padding-bottom: 10px;
+            padding-top: 10px;
+            background-color: #F3F0EA;
+        }
+        .context {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        .context p {
+            font-size: 14px;
+            font-weight: 300;
+        }
+        .context li {
+            font-size: 12px;
+        }
+   </style>
+</head>
+<body>
+<div class="header">
+    <h1>QU PLUS </h1>
+</div>
+<div class="content">
+    <div class = "context">
+    <p>Dear Customer of mobile number <span th:text="${sourcePhoneNumber}"></span></p>
+    <p>Subject: Result of Funds Transfer (<span th:text="${paymentStatus}"></span>)</p>
+    <p>With reference to your request for funds transfer via QU Plus Service as follows:</p>
+    <pre>
+    Transaction Date: <span th:text="${date}"></span>
+    Transaction Number: <span th:text="${transactionNumber}"></span>
+    From Account: <span th:text="${sourceAccountNumber}"></span>
+    To Bank: <span th:text="${destBank}"></span>
+    To Account: <span th:text="${destAccountNumber}"></span>
+    Account Name: <span th:text="${destAccountName}"></span>
+    Amount (THB): <span th:text="${amount}"></span>
+    Fee (THB): <span th:text="${fee}"></span>
+    Available Balance (THB): <span th:text="${availableBalance}"></span>
+</pre>
+    <p>We wish to inform you that the funds transfer has been
+        <span th:if="${paymentStatus == 'Success'}">successfully completed.</span>
+        <span th:unless="${paymentStatus == 'Success'}">failed.</span>
+    </p>
+    <p>Should you require further information, please kindly contact:</p>
+    <ul>
+        <li>Tel: 02-641-9999</li>
+        <li>Email: QUPLUS@fourqu.com</li>
+    </ul>
+    <br>
+    <p>Yours sincerely,</p>
+    <p>4QU Team</p>
+    </div>
+</div>
+
+
+</body>
+</html>

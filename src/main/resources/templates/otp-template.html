@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    <title>Hello newspaper subscription</title>
+    <style>
+        .header {
+            height: 80px;
+            background-color: #387766;
+            display: flex;
+            align-items: center;
+        }
+
+        .header h1 {
+            color: #F3F0EA;
+            margin-left: 5px;
+            font-size: 35px;
+        }
+
+        .otp {
+            background-color: rgba(146, 143, 143, 0.264);
+            width: 150px;
+            height: 75px;
+            display: flex;
+            align-items: center;
+        }
+        .otp h1 {
+            color: #61A592;
+            margin-left: 30px;
+        }
+        .content {
+            padding-bottom: 10px;
+            padding-top: 10px;
+            background-color: #F3F0EA;
+          }
+          .context {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+          }
+          .context p {
+            font-size: 14px;
+            font-weight: 300;
+          }
+    </style>
+</head>
+
+<body>
+<div class="header">
+    <h1>QU PLUS </h1>
+</div>
+<div class="content">
+    <div class="context">
+        <p>To authenticate,please use the following One Time Password (OTP):</p>
+        <div class="otp">
+            <h1><span th:text="${otp}">123456</span></h1>
+        </div>
+        <p>This OTP is valid for only 5 min. if you require any resistance,
+            please contact us at 02-641-9999.
+        </p>
+        <br>
+        <p>Thank you for using QU PLUS.</p>
+    </div>
+</div>
+
+
+
+</body>
+
+</html>

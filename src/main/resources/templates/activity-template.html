@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hello newspaper subscription</title>
+  <style>
+        .header {
+            height: 80px;
+            background-color: #387766;
+            display: flex;
+            align-items: center;
+        }
+        .header h1 {
+            color: #F3F0EA;
+            margin-left: 5px;
+            font-size: 35px;
+        }
+        .content {
+          padding-bottom: 10px;
+          padding-top: 10px;
+          background-color: #F3F0EA;
+        }
+        .context {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: 20px;
+        }
+        .context p {
+          font-size: 14px;
+          font-weight: 300;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="header">
+  <h1>QU PLUS </h1>
+</div>
+
+<div class = "content">
+  <div class = "context">
+    <p>Dear AccountID: <span th:text="${AccountID}"></span></p>
+    <p>You have successfully logged into QU PLUS</p><br>
+    <p>Date & Time of Login : <span th:text="${timeStamp}"></span></p><br>
+    <p>if you did not log into your account this time,</p>
+    <p>please immediately contact us at 02-641-9999.</p><br>
+    <p>QU PLUS bank has no policy to request your password</p>
+    <p>For your safety, please keep your personal information</p>
+    <p>and password confidential and do not share it with anyone.</p>
+    <br>
+
+    <p>Thank you for use QU PLUS</p>
+    <br>
+    <p>Yours sincerely,</p>
+    <p>4QU Team</p>
+  </div>
+
+</div>
+
+</body>
+</html>

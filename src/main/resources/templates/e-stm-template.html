@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hello newspaper subscription</title>
+    <style>
+        .header {
+            height: 80px;
+            background-color: #387766;
+            display: flex;
+            align-items: center;
+        }
+        .header h1 {
+            color: #F3F0EA;
+            margin-left: 5px;
+            font-size: 35px;
+        }
+        .content {
+          padding-bottom: 10px;
+          padding-top: 10px;
+          background-color: #F3F0EA;
+        }
+        .context {
+          margin-top: 20px;
+          margin-bottom: 20px;
+          margin-left: 20px;
+        }
+        .context p {
+          font-size: 14px;
+          font-weight: 300;
+        }
+
+   </style>
+</head>
+<body>
+<div class="header">
+    <h1>QU PLUS </h1>
+</div>
+<div class="content">
+    <div class="context">
+        <p>Dear <span th:text="${name}"></span></p>
+        <p>Attached please find the statement for your statement of saving account number <span th:text="${accountNumber}"></span>
+            account name <span th:text="${name}"></span>
+        </p>
+        <br>
+        <p>You can view details by clicking on the attached file and entering the following password.</p>
+        <p>The password is your first four account number.</p>
+        <br>
+        <p>For more information:</p>
+        <p>Tel: 02-641-9999</p>
+        <p>Email: QUPLUS@fourqu.com</p>
+        <br>
+        <br>
+        <p>Yours sincerely,</p>
+        <p>4QU Team</p>
+    </div>
+</div>
+
+
+</body>
+</html>

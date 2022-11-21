@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+  <title>Hello newspaper subscription</title>
+  <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        .wHeader {
+            background-color: #387766;
+            height: 105px;
+            display: flex;
+            align-items: center;
+
+        }
+        .wHeader h1 {
+            color: #F3F0EA;
+            font-size : 45px;
+            margin-left: 10px;
+        }
+        .content {
+            padding-bottom: 10px;
+            padding-top: 10px;
+            background-color: #F3F0EA;
+        }
+        .context {
+            margin-top: 20px;
+            margin-bottom: 20px;
+            margin-left: 20px;
+        }
+        .context p {
+            font-size: 16px;
+            font-weight: 300;
+            margin-left: 20px;
+        }
+    </style>
+</head>
+<body>
+<div class="wHeader">
+  <h1>Welcome to QU PLUS Shop Service</h1>
+</div>
+<div class="content">
+  <div class = "context">
+    <p>Hello, <span th:text="${name}"></span></p><br>
+    <p>Welcome <span th:text="${shopName}"></span> to QU PLUS Shop service.</p>
+    <p>we wish you'll be happy to use own Shop service.</p>
+    <br>
+
+    <p>Sincerely,</p>
+    <p>4QU Team</p>
+  </div>
+
+</div>
+</body>
+</html>
