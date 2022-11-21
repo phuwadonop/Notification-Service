@@ -74,7 +74,7 @@ public class StatementSender extends EmailSender{
         message.setSubject(subject);
         message.setFrom(new InternetAddress(sourceEmail,personal));
         message.setTo(destEmail);
-        File file = new File("R:/work/project/FourQU/statement"+accountNumber+".pdf");
+        File file = new File("statement"+accountNumber+".pdf");
         message.addAttachment("statement.pdf", file);
         String content = templateEngine.process(contentTemplate,ctx);
         message.setText(content,true);
