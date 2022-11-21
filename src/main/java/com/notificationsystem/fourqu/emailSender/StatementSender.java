@@ -37,7 +37,7 @@ public class StatementSender extends EmailSender{
         String pwd = event.getAccountNumber().substring(0,4);
 
         //create statement.pdf file
-        createStatementFile(event.getPaymentList(),"statement"+event.getAccountNumber()+".pdf",pwd);
+        createStatementFile(event.getPaymentList(),"statement-"+event.getAccountNumber()+".pdf",pwd);
 
         try {
             Context ctx = new Context();
@@ -50,7 +50,7 @@ public class StatementSender extends EmailSender{
             mailSender.send(mimeMessage);
             System.out.println("Statement has sent.");
 
-            File file = new File(event.getAccountNumber()+".pdf");
+            File file = new File("statement-"+event.getAccountNumber()+".pdf");
             FileUtils.forceDelete(file);
 
         } catch (Exception e){
@@ -74,7 +74,7 @@ public class StatementSender extends EmailSender{
         message.setSubject(subject);
         message.setFrom(new InternetAddress(sourceEmail,personal));
         message.setTo(destEmail);
-        File file = new File("statement"+accountNumber+".pdf");
+        File file = new File("statement-"+accountNumber+".pdf");
         message.addAttachment("statement.pdf", file);
         String content = templateEngine.process(contentTemplate,ctx);
         message.setText(content,true);
