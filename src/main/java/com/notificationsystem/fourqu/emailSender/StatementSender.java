@@ -59,10 +59,12 @@ public class StatementSender extends EmailSender{
     }
 
     private void createStatementFile(List<Payment> paymentList, String pdfFileName , String password) throws IOException {
-        Runnable genStatement = new PDFGenerator(paymentList,pdfFileName,password);
-        Thread worker = new Thread(genStatement);
-        worker.start();
-        System.out.println(worker.getName());
+//        Runnable genStatement = new PDFGenerator(paymentList,pdfFileName,password);
+//        Thread worker = new Thread(genStatement);
+//        worker.start();
+//        System.out.println(worker.getName());
+        PDFGenerator genStatement = new PDFGenerator(paymentList,pdfFileName,password);
+        genStatement.generateStatement();
     }
 
     private MimeMessage createEmailContent(String sourceEmail, String personal, String destEmail,
