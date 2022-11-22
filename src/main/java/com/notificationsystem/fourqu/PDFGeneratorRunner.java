@@ -1,7 +1,7 @@
 package com.notificationsystem.fourqu;
 
-import com.notificationsystem.fourqu.emailService.StatementService;
-import com.notificationsystem.fourqu.event.StatementEvent;
+import com.notificationsystem.fourqu.emailService.PaymentEmailService;
+import com.notificationsystem.fourqu.event.PaymentEvent;
 import com.notificationsystem.fourqu.model.Payment;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
@@ -16,7 +16,7 @@ import java.util.List;
 @Component
 public class PDFGeneratorRunner implements CommandLineRunner {
     @Autowired
-    private StatementService statementService;
+    private PaymentEmailService paymentEmailService;
 
     @Override
     public void run(String... args) throws Exception {
@@ -39,18 +39,30 @@ public class PDFGeneratorRunner implements CommandLineRunner {
 
         String name = "phuwadon";
         String receiver = "pmmp1599@gmail.com";
+        String status = "Success";
+        String sPhoneNo = "0999999999";
+        String transactionNumber = "012291190014CPP01655";
+        String sourceAccountNumber= "xxx-x-x1288-x";
+        String destBank ="KASIKORNBANK";
+        String destAccountNumber = "029-2-52366-1";
+        String destAccountName = "VANNAPHA SIRIWAT";
+        float amount = 14.00F;
+        float  fee = 0.00F;
+        float availableBalance = 729.87F;
 
-        List<StatementEvent> events = new ArrayList<StatementEvent>();
 
-        for (int i = 0 ; i < 1 ; i++) {
-            long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
-            StatementEvent statementEvent = new StatementEvent(receiver,statement,name,String.valueOf(number));
-            events.add(statementEvent);
+        List<PaymentEvent> events = new ArrayList<PaymentEvent>();
+
+        for (int i = 0 ; i < 100 ; i++) {
+//            long number = (long) Math.floor(Math.random() * 9_000_000_000L) + 1_000_000_000L;
+            PaymentEvent paymentEvent = new PaymentEvent(receiver,status,sPhoneNo,date1,transactionNumber,sourceAccountNumber,
+                    destBank,destAccountNumber,destAccountName,amount,fee,availableBalance);
+            events.add(paymentEvent);
         }
 
-//        for (StatementEvent event : events) {
+//        for (PaymentEvent event : events) {
 //            long start = System.nanoTime();
-//            this.statementService.update(event);
+//            this.paymentEmailService.update(event);
 //        }
 
     }

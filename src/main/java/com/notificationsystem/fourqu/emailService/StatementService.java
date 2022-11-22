@@ -18,7 +18,6 @@ public class StatementService {
     @EventListener
     public void update(StatementEvent event) throws IOException, InterruptedException {
         System.out.println("Listener update statementEvent");
-        long start = System.nanoTime();
         statementSender.sent(event);
     }
 }

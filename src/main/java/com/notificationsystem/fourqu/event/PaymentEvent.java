@@ -1,13 +1,10 @@
 package com.notificationsystem.fourqu.event;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.stereotype.Component;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.NotNull;
-import java.lang.String;
-import java.text.ParseException;
 import java.util.Date;
 
 @Component
@@ -49,18 +46,18 @@ public class PaymentEvent extends EmailEvent{
     public PaymentEvent() {
     }
 
-    public PaymentEvent(@JsonProperty("destEmail") String destEmail,
-                        @JsonProperty("paymentStatus") String status,
-                        @JsonProperty("sourcePhoneNumber") String sourcePhoneNumber,
-                        @DateTimeFormat @JsonProperty("date") Date date,
-                        @JsonProperty("transactionNumber")String transactionNumber,
-                        @JsonProperty("sourceAccountNumber")String sourceAccountNumber,
-                        @JsonProperty("destBank")String destBank,
-                        @JsonProperty("destAccountNumber")String destAccountNumber,
-                        @JsonProperty("destAccountName")String destAccountName,
-                        @JsonProperty("amount") float amount,
-                        @JsonProperty("fee") float fee,
-                        @JsonProperty("availableBalance") float availableBalance) throws ParseException {
+    public PaymentEvent(String destEmail,
+                        String status,
+                        String sourcePhoneNumber,
+                        @DateTimeFormat Date date,
+                        String transactionNumber,
+                        String sourceAccountNumber,
+                        String destBank,
+                        String destAccountNumber,
+                        String destAccountName,
+                        float amount,
+                        float fee,
+                        float availableBalance){
         super(destEmail);
         setStatus(status);
         setSourcePhoneNumber(sourcePhoneNumber);
@@ -74,6 +71,32 @@ public class PaymentEvent extends EmailEvent{
         setFee(fee);
         setAvailableBalance(availableBalance);
     }
+
+//    public PaymentEvent(@JsonProperty("destEmail") String destEmail,
+//                        @JsonProperty("paymentStatus") String status,
+//                        @JsonProperty("sourcePhoneNumber") String sourcePhoneNumber,
+//                        @DateTimeFormat @JsonProperty("date") Date date,
+//                        @JsonProperty("transactionNumber")String transactionNumber,
+//                        @JsonProperty("sourceAccountNumber")String sourceAccountNumber,
+//                        @JsonProperty("destBank")String destBank,
+//                        @JsonProperty("destAccountNumber")String destAccountNumber,
+//                        @JsonProperty("destAccountName")String destAccountName,
+//                        @JsonProperty("amount") float amount,
+//                        @JsonProperty("fee") float fee,
+//                        @JsonProperty("availableBalance") float availableBalance) throws ParseException {
+//        super(destEmail);
+//        setStatus(status);
+//        setSourcePhoneNumber(sourcePhoneNumber);
+//        setDate(date);
+//        setTransactionNumber(transactionNumber);
+//        setSourceAccountNumber(sourceAccountNumber);
+//        setDestBank(destBank);
+//        setDestAccountNumber(destAccountNumber);
+//        setDestAccountName(destAccountName);
+//        setAmount(amount);
+//        setFee(fee);
+//        setAvailableBalance(availableBalance);
+//    }
 
     public Date getDate() {
         return this.date;
