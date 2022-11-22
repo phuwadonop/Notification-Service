@@ -28,7 +28,7 @@ public class StatementSender extends EmailSender{
     }
 
 
-    public void sent(StatementEvent event) throws IOException {
+    public void sent(StatementEvent event) throws IOException, InterruptedException {
 
         String subject = "E-Statement By QU PLUS";
         String personal = "QU PLUS";
@@ -49,22 +49,29 @@ public class StatementSender extends EmailSender{
             System.out.println("Statement sending...");
             mailSender.send(mimeMessage);
             System.out.println("Statement has sent.");
+//            long stop = System.nanoTime();
+//            System.out.println("Statement has sent. --> " + String.format("%d",stop-start));
 
             File file = new File("statement-"+event.getAccountNumber()+".pdf");
             FileUtils.forceDelete(file);
-
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                long s = System.nanoTime();
+                sent(event);
+
+            }
         }
     }
 
     private void createStatementFile(List<Payment> paymentList, String pdfFileName , String password) throws IOException {
-//        Runnable genStatement = new PDFGenerator(paymentList,pdfFileName,password);
-//        Thread worker = new Thread(genStatement);
-//        worker.start();
-//        System.out.println(worker.getName());
-        PDFGenerator genStatement = new PDFGenerator(paymentList,pdfFileName,password);
-        genStatement.generateStatement();
+        Runnable genStatement = new PDFGenerator(paymentList,pdfFileName,password);
+        Thread worker = new Thread(genStatement);
+        worker.start();
+        System.out.println(worker.getName());
+//        PDFGenerator genStatement = new PDFGenerator(paymentList,pdfFileName,password);
+//        genStatement.generateStatement();
     }
 
     private MimeMessage createEmailContent(String sourceEmail, String personal, String destEmail,

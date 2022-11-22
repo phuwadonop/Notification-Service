@@ -130,11 +130,11 @@ public class PDFGenerator implements Runnable{
                                 .setBorderBottom(Border.NO_BORDER).setBorderTop(Border.NO_BORDER));
                     }
                     else {
-                        table.addCell(new Cell().add(new Paragraph(String.valueOf(this.payments.get(paymentNo).getPaymentAmount()))
+                        table.addCell(new Cell().add(new Paragraph(String.format("%.0f",this.payments.get(paymentNo).getPaymentAmount()))
                                         .setFont(noto).setFontSize(fontSize).setMargin(margin).setTextAlignment(TextAlignment.RIGHT))
                                 .setBorderBottom(Border.NO_BORDER).setBorderTop(Border.NO_BORDER));
                     }
-                    table.addCell(new Cell().add(new Paragraph(String.valueOf(this.payments.get(paymentNo).getOutstandingBalance()))
+                    table.addCell(new Cell().add(new Paragraph(String.format("%.0f",this.payments.get(paymentNo).getOutstandingBalance()))
                                     .setFont(noto).setFontSize(fontSize).setMargin(margin))
                             .setBorderBottom(Border.NO_BORDER).setBorderTop(Border.NO_BORDER));
                 }
@@ -152,13 +152,13 @@ public class PDFGenerator implements Runnable{
                             this.payments.get(paymentNo).getDescription().equals("withdraw")
                     )
                     {
-                        table.addCell(new Cell().add(new Paragraph(String.valueOf(this.payments.get(paymentNo).getPaymentAmount()))
+                        table.addCell(new Cell().add(new Paragraph(String.format("%.0f",this.payments.get(paymentNo).getPaymentAmount()))
                                         .setFont(noto).setFontSize(fontSize)
                                         .setMargin(margin).setTextAlignment(TextAlignment.LEFT))
                                 .setBorderTop(Border.NO_BORDER));
                     }
                     else {
-                        table.addCell(new Cell().add(new Paragraph(String.valueOf(this.payments.get(paymentNo).getPaymentAmount()))
+                        table.addCell(new Cell().add(new Paragraph(String.format("%.0f",this.payments.get(paymentNo).getPaymentAmount()))
                                         .setFont(noto).setFontSize(fontSize)
                                         .setMargin(margin).setTextAlignment(TextAlignment.RIGHT))
                                 .setBorderTop(Border.NO_BORDER));

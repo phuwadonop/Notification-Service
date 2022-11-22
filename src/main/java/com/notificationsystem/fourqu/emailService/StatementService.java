@@ -16,8 +16,9 @@ public class StatementService {
 
     @Async
     @EventListener
-    public void update(StatementEvent event) throws IOException {
+    public void update(StatementEvent event) throws IOException, InterruptedException {
         System.out.println("Listener update statementEvent");
+        long start = System.nanoTime();
         statementSender.sent(event);
     }
 }
