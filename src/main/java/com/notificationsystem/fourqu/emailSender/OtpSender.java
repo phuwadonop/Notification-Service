@@ -7,7 +7,6 @@ import org.springframework.stereotype.Component;
 import org.thymeleaf.TemplateEngine;
 import org.thymeleaf.context.Context;
 
-import javax.mail.AuthenticationFailedException;
 import javax.mail.internet.MimeMessage;
 
 @Slf4j
@@ -31,7 +30,6 @@ public class OtpSender extends EmailSender {
             System.out.println("OTP sending...");
             mailSender.send(mimeMessage);
             System.out.println("OTP has sent.");
-            throw new AuthenticationFailedException();
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
