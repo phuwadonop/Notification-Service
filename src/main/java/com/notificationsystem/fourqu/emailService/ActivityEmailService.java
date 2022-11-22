@@ -13,7 +13,7 @@ public class ActivityEmailService {
     private ActivitySender activitySender;
     @Async
     @EventListener
-    public void update(ActivityEvent event) {
+    public void update(ActivityEvent event) throws InterruptedException {
         System.out.println("Listener update activityEvent");
         activitySender.sent(event);}
 }

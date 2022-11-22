@@ -14,13 +14,13 @@ public class PaymentEmailService {
     private PaymentSender paymentSender;
     @Async
     @EventListener
-    public void update(PaymentEvent event){
+    public void update(PaymentEvent event) throws InterruptedException {
         System.out.println("Listener update paymentEvent");
         paymentSender.sent(event);
     }
     @Async
     @EventListener
-    public void update(PaymentRcEvent event){
+    public void update(PaymentRcEvent event) throws InterruptedException {
         System.out.println("Listener update paymentRcEvent");
         paymentSender.sent(event);
     }

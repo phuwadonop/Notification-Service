@@ -14,14 +14,14 @@ public class WelcomeEmailService {
     private WelcomeEmailSender welcomeSender;
     @Async
     @EventListener
-    public void update(RegisteredEvent event) {
+    public void update(RegisteredEvent event) throws InterruptedException {
         System.out.println("Listener update welcomeEvent");
         welcomeSender.sent(event);
     }
 
     @Async
     @EventListener
-    public void update(ShopRegisterEvent event) {
+    public void update(ShopRegisterEvent event) throws InterruptedException {
         System.out.println("Listener update welcomeEvent");
         welcomeSender.sent(event);
     }

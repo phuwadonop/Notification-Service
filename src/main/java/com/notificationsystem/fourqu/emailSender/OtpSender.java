@@ -17,7 +17,7 @@ public class OtpSender extends EmailSender {
     public OtpSender(JavaMailSender mailSender, TemplateEngine templateEngine) {
         super(mailSender, templateEngine);
     }
-    public void sent(OtpEvent event){
+    public void sent(OtpEvent event) throws InterruptedException {
         String subject = "Verification code";
         String personal = "QU PLUS";
         String template = "otp-template.html";
@@ -33,6 +33,10 @@ public class OtpSender extends EmailSender {
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                sent(event);
+            }
         }
     }
 }

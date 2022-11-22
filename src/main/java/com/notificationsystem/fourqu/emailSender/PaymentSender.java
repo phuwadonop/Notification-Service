@@ -18,7 +18,7 @@ public class PaymentSender extends EmailSender{
         super(mailSender, templateEngine);
     }
 
-    public void sent(PaymentEvent event){
+    public void sent(PaymentEvent event) throws InterruptedException {
 
         String subject = "Result of Funds Transfer";
         String personal = "QU PLUS";
@@ -55,9 +55,13 @@ public class PaymentSender extends EmailSender{
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                sent(event);
+            }
         }
     }
-    public void sent(PaymentRcEvent event){
+    public void sent(PaymentRcEvent event) throws InterruptedException {
 
         String subject = "Result of Funds Receive";
         String personal = "QU PLUS";
@@ -93,6 +97,10 @@ public class PaymentSender extends EmailSender{
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                sent(event);
+            }
         }
     }
 }

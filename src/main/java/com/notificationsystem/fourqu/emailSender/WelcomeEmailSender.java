@@ -16,7 +16,7 @@ public class WelcomeEmailSender extends EmailSender {
     public WelcomeEmailSender(JavaMailSender mailSender, TemplateEngine templateEngine) {
         super(mailSender, templateEngine);
     }
-    public void sent (RegisteredEvent event){
+    public void sent (RegisteredEvent event) throws InterruptedException {
         String subject = "Welcome to QU PLUS";
         String personal = "QU PLUS";
         String template = "welcome-template";
@@ -32,10 +32,14 @@ public class WelcomeEmailSender extends EmailSender {
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                sent(event);
+            }
         }
     }
 
-    public void sent (ShopRegisterEvent event){
+    public void sent (ShopRegisterEvent event) throws InterruptedException {
         String subject = "Welcome to QU PLUS Shop Service";
         String personal = "QU PLUS";
         String template = "shopRegistered-template";
@@ -52,6 +56,10 @@ public class WelcomeEmailSender extends EmailSender {
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                sent(event);
+            }
         }
     }
 

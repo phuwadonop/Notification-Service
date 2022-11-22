@@ -17,7 +17,7 @@ public class ActivitySender extends EmailSender {
     public ActivitySender(JavaMailSender mailSender, TemplateEngine templateEngine) {
         super(mailSender, templateEngine);
     }
-    public void sent(ActivityEvent event){
+    public void sent(ActivityEvent event) throws InterruptedException {
 
         String subject = "Successfully logged in to QU PLUS";
         String personal = "QU PLUS";
@@ -44,6 +44,10 @@ public class ActivitySender extends EmailSender {
 
         } catch (Exception e){
             System.out.printf("Error: %s\n",e.getMessage());
+            if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
+                Thread.sleep(60000);
+                sent(event);
+            }
         }
     }
 }

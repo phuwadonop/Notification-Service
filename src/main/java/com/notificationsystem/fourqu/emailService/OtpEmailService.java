@@ -14,7 +14,7 @@ public class OtpEmailService {
 
     @Async
     @EventListener
-    public void update(OtpEvent event){
+    public void update(OtpEvent event) throws InterruptedException {
         System.out.println("Listener update otpEvent");
         otpSender.sent(event);
     }

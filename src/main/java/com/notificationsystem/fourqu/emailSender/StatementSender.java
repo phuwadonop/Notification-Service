@@ -58,9 +58,7 @@ public class StatementSender extends EmailSender{
             System.out.printf("Error: %s\n",e.getMessage());
             if (e.getClass().getName() == "javax.mail.AuthenticationFailedException"){
                 Thread.sleep(60000);
-                long s = System.nanoTime();
                 sent(event);
-
             }
         }
     }
