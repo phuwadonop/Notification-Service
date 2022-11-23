@@ -13,6 +13,7 @@ import java.io.IOException;
 public class StatementService {
     @Autowired
     private StatementSender statementSender;
+    
 
     @Async
     @EventListener
